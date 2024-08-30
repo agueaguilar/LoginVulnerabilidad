@@ -1,0 +1,23 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class LoginApp {
+    public static void main(String[] args) {
+        // Ejemplo básico de uso de JSON Simple
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("username", "agueda");
+        jsonObject.put("password", "ingenieria");
+
+        System.out.println("JSON Object: " + jsonObject);
+
+        // Ejemplo de parser
+        JSONParser parser = new JSONParser();
+        try {
+            JSONObject jsonObjectParsed = (JSONObject) parser.parse(jsonObject.toJSONString());
+            System.out.println("Parsed JSON Object: " + jsonObjectParsed);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
