@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clonar tu repositorio Git
-                git 'https://github.com/agueaguilar/JavaLoginApp.git'
+                git 'https://github.com/agueaguilar/LoginVulnerabilidad.git'
             }
         }
 
