@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Definir variables de entorno necesarias
         DEPENDENCY_TRACK_URL = 'http://localhost:8081' // URL donde está corriendo Dependency-Track
-        API_KEY = 'x8iTTrKzO0AQ7WDVpdAtmx64TmqPn9Di ' // Reemplaza con tu clave API de Dependency-Track
+        API_KEY = 'odt_XNeJsvvAy2yqkYME1I9iUPtg62YMqegf' // Reemplaza con tu clave API de Dependency-Track
         PROJECT_NAME = 'JavaLoginApp'
         PROJECT_VERSION = '1.0'
     }
@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clonar tu repositorio Git
+                // Clonar el repositorio
                 git 'https://github.com/agueaguilar/LoginVulnerabilidad.git'
             }
         }
