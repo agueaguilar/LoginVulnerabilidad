@@ -13,7 +13,7 @@ services:
       - my_network
 
   dependency-track:
-    image: owasp/dependency-track:latest
+    image: dependencytrack/bundled:latest
     container_name: dependency-track
     ports:
       - '8081:8080'
