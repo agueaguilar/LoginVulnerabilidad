@@ -81,15 +81,27 @@ public class LoginApp {
 
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Handle login logic here
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                // Check credentials
-                if ("Agueda".equals(username) && "Shute".equals(password)) {
-                    JOptionPane.showMessageDialog(frame, "Login Successful!");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Invalid Credentials!");
+                // Cargar las credenciales desde el archivo JSON
+                JSONParser parser = new JSONParser();
+                try (FileReader reader = new FileReader("credentials.json")) {
+                    JSONObject jsonObject = (JSONObject) parser.parse(reader);
+
+                    String storedUsername = (String) jsonObject.get("username");
+                    String storedPassword = (String) jsonObject.get("password");
+
+                    // Verificar las credenciales
+                    if (storedUsername.equals(username) && storedPassword.equals(password)) {
+                        JOptionPane.showMessageDialog(frame, "Login Successful!");
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Invalid Credentials!");
+                    }
+
+                } catch (IOException | ParseException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(frame, "Error reading credentials file.");
                 }
             }
         });

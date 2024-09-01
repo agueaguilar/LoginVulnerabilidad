@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clonar el repositorio
+                // Clonar el
                 git 'https://github.com/agueaguilar/LoginVulnerabilidad.git'
             }
         }
@@ -101,5 +101,14 @@ pipeline {
                 }
             }
         }
+        stage('Build and Package') {
+    steps {
+        // Usar Maven para compilar y empaquetar el código
+        script {
+            sh 'mvn clean package'
+        }
+    }
+}
+
     }
 }
