@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Definir variables de entorno necesarias
         DEPENDENCY_TRACK_URL = 'http://localhost:8081' // URL donde está corriendo Dependency-Track
-        API_KEY = 'odt_XNeJsvvAy2yqkYME1I9iUPtg62YMqegf' // Reemplaza con tu clave API de Dependency-Track
+        API_KEY = 'odt_B5Mg3ngUw9MoYI9bxsQR9AcqL5b7PeQG' // Reemplaza con tu clave API de Dependency-Track
         PROJECT_NAME = 'JavaLoginApp'
         PROJECT_VERSION = '1.0'
     }
