@@ -13,7 +13,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clonar el repositorio
-                git 'https://github.com/agueaguilar/LoginVulnerabilidad.git'
+                git branch: 'main',
+                     'https://github.com/agueaguilar/LoginVulnerabilidad.git',
+                     credentialsId: 'github-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'
             }
         }
 
@@ -88,7 +90,7 @@ pipeline {
             steps {
                 // Enviar el reporte por correo electronico
                 script {
-                    mail bcc: '', body: 'Find attached the vulnerability report.', subject: 'Vulnerability Report', to: 'your-email@example.com', attachmentsPattern: 'report.pdf'
+                    mail bcc: '', body: 'Find attached the vulnerability report.', subject: 'Vulnerability Report', to: 'aguedaaguilar14@gmai.com', attachmentsPattern: 'report.pdf'
                 }
             }
         }
