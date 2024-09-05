@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -8,7 +7,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- Dependencia para JSON Simple -->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
@@ -17,22 +15,17 @@
     </dependencies>
 
     <build>
-        <!-- Directorio de código fuente -->
-        <sourceDirectory>src/main/java</sourceDirectory>
-
+        <sourceDirectory>src</sourceDirectory>
         <resources>
-            <!-- Directorio para los archivos de recursos como JSON -->
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>src</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.json</include>
                 </includes>
             </resource>
         </resources>
-
         <plugins>
-            <!-- Plugin para compilar el código Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -42,8 +35,6 @@
                     <target>11</target>
                 </configuration>
             </plugin>
-
-            <!-- Plugin para crear el archivo JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -51,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>LoginApp</mainClass> <!-- Cambia por la clase principal -->
+                            <mainClass>LoginApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
