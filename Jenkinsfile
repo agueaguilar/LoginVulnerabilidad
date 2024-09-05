@@ -12,25 +12,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clonar el
+                // Clonar el repositorio
                 git 'https://github.com/agueaguilar/LoginVulnerabilidad.git'
             }
         }
 
-        stage('Build') {
+        stage('Build and Package') {
             steps {
-                // Compilar el código Java
+                // Usar Maven para compilar y empaquetar el código
                 script {
-                    sh 'javac -d bin src/LoginApp.java'
-                }
-            }
-        }
-
-        stage('Package') {
-            steps {
-                // Empaquetar la aplicación Java en un JAR
-                script {
-                    sh 'jar cf LoginApp.jar -C bin .'
+                    sh 'mvn clean package'
                 }
             }
         }
@@ -39,7 +30,7 @@ pipeline {
             steps {
                 // Desplegar usando Docker Compose
                 script {
-                    sh 'docker-compose up --build'
+                    sh 'docker-compose up --build -d'
                 }
             }
         }
@@ -66,7 +57,7 @@ pipeline {
                     -H "X-Api-Key: $API_KEY" \\
                     -F "projectName=$PROJECT_NAME" \\
                     -F "projectVersion=$PROJECT_VERSION" \\
-                    -F "file=@LoginApp.jar"
+                    -F "file=@target/LoginApp.jar"
                     """
                 }
             }
@@ -95,20 +86,11 @@ pipeline {
 
         stage('Send Report') {
             steps {
-                // Enviar el reporte por correo
+                // Enviar el reporte por correo electronico
                 script {
                     mail bcc: '', body: 'Find attached the vulnerability report.', subject: 'Vulnerability Report', to: 'your-email@example.com', attachmentsPattern: 'report.pdf'
                 }
             }
         }
-        stage('Build and Package') {
-    steps {
-        // Usar Maven para compilar y empaquetar el código
-        script {
-            sh 'mvn clean package'
-        }
-    }
-}
-
     }
 }
